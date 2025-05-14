@@ -25,7 +25,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 #include <string.h>
 #include <assert.h>
 
-#define NEIGHBOR_MAX 16
+// 3D grid has 26 neighbors
+#define NEIGHBOR_MAX 32
 
 typedef unsigned int uint;
 

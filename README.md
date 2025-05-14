@@ -46,7 +46,7 @@ int heuristic(void *ud, unsigned int pos, struct pathfinding_neighbor result[]);
 The coord should be encoded into a unsigned int, the typical way is `(x << 16) | y`.
 
 The heuristic function should returns a pathfinding_neighbor array, which describes the set of positions connected to the location.
-The maximum number of the result[] is 16, usually 8 is enough.
+The maximum number of the result[] is 32, usually 8 is enough.
 
 * `.pos` : The position of the connection.
 * `.dist` : The distance to the location.
