@@ -234,8 +234,6 @@ astar(struct context *ctx, uint start, uint goal) {
 		current = &ctx->hash[list];
 		if (current->coord == goal)
 			return list;
-		else if (size != 1 && current->next < 0)
-			return -1; // the last open node, can't find goal
 		struct pathfinding_neighbor neighbor[NEIGHBOR_MAX];
 		int n = ctx->func(ctx->ud, current->coord, neighbor);
 		if (n == 0) {
