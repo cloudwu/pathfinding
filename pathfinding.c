@@ -229,18 +229,13 @@ astar(struct context *ctx, uint start, uint goal) {
 	// Use half space to minimalize the hash collide
 	int cap = 1 << (ctx->pow2 - 1);
 	
-	for (;;) {
+	while (list >= 0) {
 		// listhead should be lowest fscore
 		current = &ctx->hash[list];
 		if (current->coord == goal)
 			return list;
 		struct pathfinding_neighbor neighbor[NEIGHBOR_MAX];
 		int n = ctx->func(ctx->ud, current->coord, neighbor);
-		if (n == 0) {
-			if (current->next < 0) {
-				return -1;	// the last open node, can't find goal
-			}
-		}
 		// remove from list (close)
 		current->fscore = 0;
 		list = current->next;
@@ -276,6 +271,7 @@ astar(struct context *ctx, uint start, uint goal) {
 			return list;
 		}
 	}
+	return -1;	// no more open node, can't find goal
 }
 
 static void
